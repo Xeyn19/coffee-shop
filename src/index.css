@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme{
+  --color-primary-bg :#C5B5A6;
+  --color-secondary-bg:#9D673A;
+  --font-primary: "Poppins", sans-serif;
+  --font-home:"Caveat", cursive;
+} 
