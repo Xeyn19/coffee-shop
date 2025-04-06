@@ -2,50 +2,74 @@
     {
         "id": 1,
         "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "coffeeName":"Black White Iced Coffee",
+        "price":70
     },
     {
         "id": 2,
         "image":"/espresso.png",
         "coffeeName":"Espresso Coffee",
-        "price":70
+        "price":80
     },
     {
         "id": 3,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/cappuccino.png",
+        "coffeeName":"Cappuccino Coffee",
+        "price":80
     },
     {
         "id": 4,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/caramel macchiato.png",
+        "coffeeName":"Caramel Macchiato Coffee",
+        "price":80
     },
     {
         "id": 5,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/Caramel Hazelnut Iced Coffee.png",
+        "coffeeName":"Caramel Hazelnut Iced Coffee",
+        "price":70
     },
     {
         "id": 6,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/Americano_Coffee.png",
+        "coffeeName":"Americano Coffee Coffee",
+        "price":80
     },
     {
         "id": 7,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/coffee_latte.png",
+        "coffeeName":"Latte Coffee",
+        "price":80
     },
     {
         "id": 8,
-        "image":"/Black-white-coffee.png",
-        "coffeeName":"Black White Coffee",
-        "price":40
+        "image":"/Mocha.png",
+        "coffeeName":"Mocha Coffee",
+        "price":80
+    },
+    {
+        "id": 9,
+        "image":"/Vanilla_Iced.png",
+        "coffeeName":"Vanilla Hazelnut Iced Coffee",
+        "price":70
+    },
+    {
+        "id": 10,
+        "image":"/Iced Caramel Macchiato.png",
+        "coffeeName":"Iced Caramel Macchiato Coffee",
+        "price":70
+    },
+    {
+        "id": 11,
+        "image":"/Iced_Mocha.png",
+        "coffeeName":"Chocolate Iced Mocha Coffee",
+        "price":70
+    },
+    {
+        "id": 12,
+        "image":"/Iced_Vanilla_Almond_Milk_Latte.png",
+        "coffeeName":"Vanilla Iced Latte Coffee",
+        "price":70
     }
 
 ]

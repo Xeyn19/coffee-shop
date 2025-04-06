@@ -30,7 +30,7 @@ if(loading) {
     <>
         <div className="flex min-h-screen flex-col">
           <h1 className='font-home text-6xl text-white ml-9 max-md:m-auto'>Coffee-List</h1>
-          <div className="grid grid-cols-4 px-10 pt-8 pb-20 gap-10 max-md:grid-cols-1 max-md:p-10 max-md:self-center ">
+          <div className="grid grid-cols-4 px-10 pt-8 pb-20 gap-10 max-md:grid-cols-1 max-md:p-10 max-md:self-center max-xl:grid-cols-2 max-xl:p-10 max-xl:self-center ">
             { coffees.map((coffee) => (
                 <div key={coffee.id} className="bg-secondary-bg flex flex-col space-y-3 py-10 justify-center items-center shadow-md w-[300px] rounded-xl">
                 <img
