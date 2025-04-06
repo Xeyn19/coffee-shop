@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 2,
+        "image":"/espresso.png",
+        "coffeeName":"Espresso Coffee",
+        "price":70
+    },
+    {
+        "id": 3,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 4,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 5,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 6,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 7,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    },
+    {
+        "id": 8,
+        "image":"/Black-white-coffee.png",
+        "coffeeName":"Black White Coffee",
+        "price":40
+    }
+
+]
