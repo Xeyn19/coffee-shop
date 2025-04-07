@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
       port: 3000,
     },
     base: mode === 'production'
-      ? process.env.VITE_BASE_PATH || '/coffee-shop' // specify base path for production
-      : '/', // base path for development
+      ? process.env.VITE_BASE_PATH || '/coffee-shop' 
+      : '/', 
   };
 });
