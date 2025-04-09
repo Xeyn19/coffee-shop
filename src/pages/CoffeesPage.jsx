@@ -8,6 +8,7 @@ const CoffeesPage = () => {
   const [basket, setBasket] = useState([]);
   const [addedToBasketMessage, setAddedToBasketMessage] = useState('');
   const [errorAddedToBasketMessage, setErrorAddedToBasketMessage] = useState('');
+  
 
 
   const timeoutRef = useRef(null); 
@@ -76,8 +77,8 @@ const CoffeesPage = () => {
       setAddedToBasketMessage('');
     }, 3000);
   }
-  
 
+  const totalPrice = basket.reduce((total, item) => total + item.quantity * item.price, 0);
   const totalQuantity = basket.reduce((total, item) => total + item.quantity, 0);
 
   if (loading) {
@@ -101,7 +102,7 @@ const CoffeesPage = () => {
             <div tabIndex={0} className="card card-compact dropdown-content bg-base-100 z-10 mt-3 w-52 shadow">
               <div className="card-body">
                 <span className="text-lg font-bold">{totalQuantity} Items</span>
-                <span className=" text-slate-700">Subtotal: $999</span>
+                <span className=" text-slate-700">Subtotal: ₱ {totalPrice}</span>
                 <div className="card-actions">
                   <button className="btn bg-orange-950 hover:text-orange-900 duration-300 transition-all text-white btn-block">View cart</button>
                 </div>
