@@ -88,7 +88,7 @@ const CoffeesPage = () => {
   return (
     <>
       <div className="flex min-h-screen flex-col font-primary">
-        <div className="flex items-center space-x-3 px-10 pt-10">
+        <div className="flex items-center space-x-3 px-10 pt-10 max-md:justify-center max-md:px-0 max-xl:px-0 max-xl:justify-center ">
           <h1 className="font-home text-6xl text-white">Coffee-List</h1>
           <div className="dropdown dropdown-end mt-2">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -111,9 +111,9 @@ const CoffeesPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 px-10 pt-8 pb-20 gap-10 max-md:grid-cols-1 max-md:p-10 max-xl:grid-cols-2 max-xl:p-10">
+        <div className="grid grid-cols-4 px-10 pt-8 pb-20 gap-10 max-md:grid-cols-1 max-md:p-10 max-xl:grid-cols-2 max-xl:p-18">
           {coffees.map((coffee) => (
-            <div key={coffee.id} className="bg-secondary-bg flex flex-col space-y-3 py-10 justify-center items-center shadow-md w-[300px] rounded-xl">
+            <div key={coffee.id} className="bg-secondary-bg flex flex-col space-y-3 py-10 max-md:text-sm justify-center max-md:m-auto max-xl:m-auto items-center shadow-md w-[300px] rounded-xl">
               <img src={coffee.image} alt={coffee.coffeeName} className="w-40 h-40 object-cover rounded" />
               <h3 className="text-white font-home text-2xl">{coffee.coffeeName}</h3>
               <h3 className="text-white">₱{coffee.price}</h3>
