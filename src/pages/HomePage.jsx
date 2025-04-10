@@ -12,8 +12,8 @@ const HomePage = () => {
                 <h1 className='font-home -ml-3 text-8xl max-md:text-6xl text-white max-xl:text-center  '>Quality Coffee <span className=''><br className='max-md:hidden' /></span>delivered to your <br className='max-md:hidden' />Door</h1>
                 <p className='text-slate-700 block max-xl:text-center max-xl:px-40 max-md:px-5 max-md:text-sm'>Everything we do is a matter of heart, body and soul. Our mission is to provide sustainably sourced, hand-picked, quality coffee.</p>
                 <button onClick={() => navigate('/Coffees')}
-                className='bg-secondary-bg px-7 hover:text-slate-700 transition-all duration-500 ease-in-out
-                 cursor-pointer text-white py-2 self-start rounded-full max-md:text-sm max-md:px-5 max-xl:self-center'>
+                className='text-white bg-orange-950 cursor-pointer hover:text-orange-900 duration-300 px-7 ease-in-out
+                 py-2 self-start rounded-full max-md:text-sm max-md:px-5 max-xl:self-center'>
                     Shop Coffees
                 </button>
             </div>
