@@ -6,12 +6,10 @@ const CoffeesPage = () => {
   const [selectedCoffee, setSelectedCoffee] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [basket, setBasket] = useState([]);
+  const [basketLoaded, setBasketLoaded] = useState(false); // ✅ Track basket loading
   const [addedToBasketMessage, setAddedToBasketMessage] = useState('');
   const [errorAddedToBasketMessage, setErrorAddedToBasketMessage] = useState('');
-  
-
-
-  const timeoutRef = useRef(null); 
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const fetchCoffees = async () => {
@@ -26,61 +24,78 @@ const CoffeesPage = () => {
         setLoading(false);
       }
     };
+
+    const storedBasket = localStorage.getItem('basket');
+    if (storedBasket) {
+      setBasket(JSON.parse(storedBasket));
+    }
+    setBasketLoaded(true); // ✅ Mark as loaded
+
     fetchCoffees();
   }, []);
+
+  useEffect(() => {
+    if (basketLoaded) {
+      localStorage.setItem('basket', JSON.stringify(basket));
+    }
+  }, [basket, basketLoaded]);
 
   const openModal = (coffee) => {
     setSelectedCoffee(coffee);
     document.getElementById('coffee_modal').showModal();
   };
 
-  function handleQuantity(coffeeQuantity) {
-    const quantityValue = parseInt(coffeeQuantity.target.value, 10);
+  const handleQuantity = (e) => {
+    const quantityValue = parseInt(e.target.value, 10);
     setQuantity(quantityValue);
-  }
+  };
 
-  function handleAddToBasket(coffee) {
+  const totalQuantity = basketLoaded
+    ? basket.reduce((total, item) => total + item.quantity, 0)
+    : 0;
+
+  const totalPrice = basketLoaded
+    ? basket.reduce((total, item) => total + item.quantity * item.price, 0)
+    : 0;
+
+  const handleAddToBasket = (coffee) => {
     if (!coffee || quantity <= 0) {
       setErrorAddedToBasketMessage('Please select a coffee and quantity!');
-      clearTimeout(timeoutRef.current); 
+      clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
         setErrorAddedToBasketMessage('');
       }, 3000);
       return;
     }
-  
+
     if (quantity >= 101 || totalQuantity + quantity >= 101) {
-      setErrorAddedToBasketMessage('Sorry You can only add up to 100 items!');
-      clearTimeout(timeoutRef.current); 
+      setErrorAddedToBasketMessage('Sorry, you can only add up to 100 items!');
+      clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
         setErrorAddedToBasketMessage('');
       }, 3000);
       return;
     }
+
     const existingCoffee = basket.find((item) => item.id === coffee.id);
-  
+
     if (existingCoffee) {
-      const updatedBasket = basket.map((item) => {
-        return item.id === coffee.id ? { ...item, quantity: item.quantity + quantity } : item;
-      });
+      const updatedBasket = basket.map((item) =>
+        item.id === coffee.id ? { ...item, quantity: item.quantity + quantity } : item
+      );
       setBasket(updatedBasket);
     } else {
       setBasket((prevBasket) => [...prevBasket, { ...coffee, quantity }]);
     }
-    
+
     setQuantity(1);
-    quantity >=!101 
-    ? setAddedToBasketMessage(`${quantity} ${coffee.coffeeName} added to basket!`) 
-    : clearTimeout(timeoutRef.current);
-    
+    setAddedToBasketMessage(`${quantity} ${coffee.coffeeName} added to basket!`);
+    clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setAddedToBasketMessage('');
     }, 3000);
-  }
-
-  const totalPrice = basket.reduce((total, item) => total + item.quantity * item.price, 0);
-  const totalQuantity = basket.reduce((total, item) => total + item.quantity, 0);
-
+  };
+  console.log(basket)
   if (loading) {
     return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
   }
@@ -96,13 +111,15 @@ const CoffeesPage = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span className="badge badge-sm indicator-item">{totalQuantity}</span>
+                {basketLoaded && (
+                  <span className="badge badge-sm indicator-item">{totalQuantity}</span>
+                )}
               </div>
             </div>
             <div tabIndex={0} className="card card-compact dropdown-content bg-base-100 z-10 mt-3 w-52 shadow">
               <div className="card-body">
                 <span className="text-lg font-bold">{totalQuantity} Items</span>
-                <span className=" text-slate-700">Subtotal: ₱ {totalPrice}</span>
+                <span className="text-slate-700">Subtotal: ₱ {totalPrice}</span>
                 <div className="card-actions">
                   <button className="btn bg-orange-950 hover:text-orange-900 duration-300 transition-all text-white btn-block">View cart</button>
                 </div>
@@ -138,8 +155,8 @@ const CoffeesPage = () => {
                 <h3 className="text-white">₱{selectedCoffee.price}</h3>
               </div>
               <div className="flex items-center justify-evenly mt-5 max-md:flex-col">
-                <div className="space-x-2  bg-secondary-bg px-4 rounded-md py-3 shadow-md">
-                  <label htmlFor="">
+                <div className="space-x-2 bg-secondary-bg px-4 rounded-md py-3 shadow-md">
+                  <label>
                     <span className="text-slate-700 font-bold">Quantity:</span>
                   </label>
                   <input
